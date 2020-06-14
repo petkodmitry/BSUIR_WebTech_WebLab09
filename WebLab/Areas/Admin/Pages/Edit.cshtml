@@ -1,0 +1,71 @@
+﻿@page "{id:int}"
+@model WebLab.Areas.Admin.Pages.EditModel
+
+@section Scripts {
+    <script src="~/js/bs-custom-file-input.js"></script>
+    <script>
+        bsCustomFileInput.init();
+    </script>
+}
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Military</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Military.MilitaryId" />
+                <div class="form-group">
+                    @if (!string.IsNullOrEmpty(Model.Military.Image)) {
+                        <img src=~/Images/@Model.Military.Image alt="NoSuchFile" width="150" />
+                    } else {
+                        <h4>Файл изображения не задан</h4>
+                    }
+                    <div class="custom-file mt-3">
+                        <input type="file" class="custom-file-input" name="image" id="customFile">
+                        <label class="custom-file-label" for="customFile">
+                            Выберите файл изображения
+                        </label>
+                    </div>
+
+                    <label asp-for="Military.MilitaryName" class="control-label"></label>
+                    <input asp-for="Military.MilitaryName" class="form-control" />
+                    <span asp-validation-for="Military.MilitaryName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Military.Description" class="control-label"></label>
+                    <input asp-for="Military.Description" class="form-control" />
+                    <span asp-validation-for="Military.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Military.Force" class="control-label"></label>
+                    <input asp-for="Military.Force" class="form-control" />
+                    <span asp-validation-for="Military.Force" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Military.Image" class="control-label"></label>
+                    <input asp-for="Military.Image" class="form-control" />
+                    <span asp-validation-for="Military.Image" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Military.MilitaryGroupId" class="control-label"></label>
+                    <select asp-for="Military.MilitaryGroupId" class="form-control" asp-items="ViewBag.MilitaryGroupId"></select>
+                    <span asp-validation-for="Military.MilitaryGroupId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
