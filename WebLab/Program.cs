@@ -17,10 +17,9 @@ namespace WebLab
 			.ConfigureLogging(log => {
 				var path = Path.Combine(Directory.GetCurrentDirectory(), "fileInfoLog.txt");
 				log.ClearProviders();
-				log.AddProvider(new FileLoggerProvider(path));
+				log.AddProvider(new FileLoggerProvider<object>(path));
 				log.AddFilter("Microsoft", LogLevel.None);
 			})
-			//.UseStartup<Startup>();
 			.ConfigureWebHostDefaults(webBuilder => {
 				webBuilder.UseStartup<Startup>();
 			});

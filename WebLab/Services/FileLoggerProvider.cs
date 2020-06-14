@@ -2,7 +2,7 @@
 
 namespace WebLab.Services
 {
-	public class FileLoggerProvider : ILoggerProvider {
+	public class FileLoggerProvider<T> : ILoggerProvider {
 		// путь к файлу логирования
 		private string _filepath;
 		/// <summary> 
@@ -14,7 +14,7 @@ namespace WebLab.Services
 		}
 
 		public ILogger CreateLogger(string categoryName) {
-			return new FileLogger(_filepath);
+			return new FileLogger<T>(_filepath);
 		}
 
 		public void Dispose() {

@@ -23,7 +23,7 @@ namespace WebLab.Middleware
 			var statusCode = context.Response.StatusCode;
 			if (statusCode != StatusCodes.Status200OK) {
 				// получить логер 
-				var logger = factory.CreateLogger<FileLogger>();
+				var logger = factory.CreateLogger<FileLogger<object>>();
 				// записать информацию в лог 
 				logger.LogInformation($"{time.ToShortDateString()}-{ time.ToLongTimeString()}: "+$"url: {context.Request.Path}" +
 					$"{context.Request.QueryString} returns { statusCode}");

@@ -4,7 +4,7 @@ using System.IO;
 
 namespace WebLab.Services
 {
-	public class FileLogger : ILogger {
+	public class FileLogger<T> : ILogger<T> {
 		// путь к файлу логирования
 		private string _filePath;
 		// объект для синхронизации записи в файл
